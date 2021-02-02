@@ -29,7 +29,7 @@ class TagControllerTest extends TestCase
         $tag = Tag::factory()->create();
 
         $this
-            ->delete("tags/{$tag}")
+            ->delete("tags/{$tag->id}")
             ->assertRedirect('/');
 
         $this->assertDatabaseMissing('tags', [
