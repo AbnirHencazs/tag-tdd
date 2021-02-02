@@ -36,4 +36,11 @@ class TagControllerTest extends TestCase
             'name' => $tag->name
         ]);
     }
+
+    public function testvalidate()
+    {
+        $this->post('tags', [
+            'name' => ''
+        ])->assertSessionHasErrors('name');
+    }
 }
