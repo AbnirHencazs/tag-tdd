@@ -8,15 +8,19 @@ use Tests\TestCase;
 
 class TagControllerTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_example()
-    {
-        $response = $this->get('/');
+    use RefreshDatabase;
 
-        $response->assertStatus(200);
+    public function testStore()
+    {
+        $this->post('tags', [
+            'name' => 'PHP'
+        ])
+        ->assertRedirect('/');
+        
+        $this->assertDatabaseHas('tags', [
+            'name' => 'PHP'
+        ]);
+
+
     }
 }
