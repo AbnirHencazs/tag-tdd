@@ -3,16 +3,15 @@
 namespace Tests\Unit\Models;
 
 use PHPUnit\Framework\TestCase;
+use App\Models\Tag;
 
 class TagTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function test_example()
+    public function test_slug()
     {
-        $this->assertTrue(true);
+        $tag = new Tag;
+        $tag->name = 'Tag TDD Laravel 8';
+
+        $this->assertEquals('tag-tdd-laravel-8', $tag->slug);
     }
 }
